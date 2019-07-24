@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 module.exports = {
      mode: 'none',
-     entry: './main.js',
+     entry: './src/main.js',
      output: {
          filename: 'Bundle.js',
          path: path.resolve(__dirname)
@@ -41,7 +41,15 @@ module.exports = {
                        use: [
                      'file-loader'
                     ]
-                }
+                },
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: "eslint-loader",
+                    options: {
+                      emitError: true
+                    }
+                  }
                 
             ]
         }
